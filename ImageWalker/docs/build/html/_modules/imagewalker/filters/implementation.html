@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>imagewalker.filters.implementation &mdash; ImageWalker  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            ImageWalker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Документация:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/core.html">Core Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/core.html#main-application">Main Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/core.html#domain-models">Domain Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/services.html">Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/services.html#file-operations-service">File Operations Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/services.html#walker-service">Walker Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/services.html#statistics-service">Statistics Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/filters.html">Filters System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/filters.html#base-filters">Base Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/filters.html#filter-implementation">Filter Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/filters.html#filter-registry">Filter Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/plugins.html">Plugins System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/plugins.html#base-plugin-system">Base Plugin System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/plugins.html#plugin-registry-loader">Plugin Registry &amp; Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/plugins.html#custom-filters-plugins">Custom Filters Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/plugins.html#file-type-plugin">File Type Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/plugins.html#size-filter-plugin">Size Filter Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/plugins.html#date-range-plugin">Date Range Plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/repository.html">Repository Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/repository.html#repository-interface">Repository Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/repository.html#repository-implementation">Repository Implementation</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/utils.html#print-utilities">Print Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/utils.html#service-providers">Service Providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/utils.html#connectors">Connectors</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">ImageWalker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">imagewalker.filters.implementation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for imagewalker.filters.implementation</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">imagewalker.domain.file_system_domain</span><span class="w"> </span><span class="kn">import</span> <span class="n">File</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imagewalker.filters.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">Filter</span>
+
+
+<div class="viewcode-block" id="ByteSizeStepFilter">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ByteSizeStepFilter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ByteSizeStepFilter</span><span class="p">(</span><span class="n">Filter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filters files by size using configurable byte steps.</span>
+
+<span class="sd">    Categories are named in megabytes for readability.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ByteSizeStepFilter.__init__">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ByteSizeStepFilter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_bytes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_bytes</span> <span class="o">=</span> <span class="n">step_bytes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_order</span> <span class="o">=</span> <span class="n">order</span></div>
+
+
+<div class="viewcode-block" id="ByteSizeStepFilter.get_category">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ByteSizeStepFilter.get_category">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">size_bytes</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_bytes</span>
+            <span class="n">lower_bound</span> <span class="o">=</span> <span class="p">(</span><span class="n">size</span> <span class="o">//</span> <span class="n">step</span><span class="p">)</span> <span class="o">*</span> <span class="n">step</span>
+            <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">lower_bound</span> <span class="o">+</span> <span class="n">step</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lower_bound</span><span class="o">/</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">upper_bound</span><span class="o">/</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">_MB&quot;</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;unknown_size&quot;</span></div>
+
+
+<div class="viewcode-block" id="ByteSizeStepFilter.get_order">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ByteSizeStepFilter.get_order">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order</span></div>
+
+
+<div class="viewcode-block" id="ByteSizeStepFilter.get_name">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ByteSizeStepFilter.get_name">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;byte_size&quot;</span></div>
+
+
+<div class="viewcode-block" id="ByteSizeStepFilter.is_applicable">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ByteSizeStepFilter.is_applicable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_applicable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="nb">hasattr</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;size_bytes&quot;</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">size_bytes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="DurationFilter">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DurationFilter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DurationFilter</span><span class="p">(</span><span class="n">Filter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filters files by duration using configurable time steps.</span>
+
+<span class="sd">    Primarily used for audio and video files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DurationFilter.__init__">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DurationFilter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_seconds</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">60.0</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_seconds</span> <span class="o">=</span> <span class="n">step_seconds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_order</span> <span class="o">=</span> <span class="n">order</span></div>
+
+
+<div class="viewcode-block" id="DurationFilter.get_category">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DurationFilter.get_category">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="nb">hasattr</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">duration</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">):</span>
+                <span class="n">duration</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">duration</span>
+                <span class="n">step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_seconds</span>
+                <span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">duration</span> <span class="o">//</span> <span class="n">step</span><span class="p">)</span> <span class="o">*</span> <span class="n">step</span><span class="p">)</span>
+                <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">lower_bound</span> <span class="o">+</span> <span class="n">step</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lower_bound</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">upper_bound</span><span class="si">}</span><span class="s2">sec&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_fallback_category</span><span class="p">()</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_fallback_category</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DurationFilter.get_order">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DurationFilter.get_order">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order</span></div>
+
+
+<div class="viewcode-block" id="DurationFilter.get_name">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DurationFilter.get_name">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;duration&quot;</span></div>
+
+
+<div class="viewcode-block" id="DurationFilter.is_applicable">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DurationFilter.is_applicable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_applicable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="nb">hasattr</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">duration</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="ow">and</span> <span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">duration</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="DateCreatedFilter">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DateCreatedFilter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DateCreatedFilter</span><span class="p">(</span><span class="n">Filter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filters files by creation date using configurable date formats.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DateCreatedFilter.__init__">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DateCreatedFilter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;%Y-%m&quot;</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_format</span> <span class="o">=</span> <span class="n">date_format</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_order</span> <span class="o">=</span> <span class="n">order</span></div>
+
+
+<div class="viewcode-block" id="DateCreatedFilter.get_category">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DateCreatedFilter.get_category">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+
+            <span class="n">stat</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">created_time</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">st_birthtime</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">created_time</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">date_format</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;unknown_date&quot;</span></div>
+
+
+<div class="viewcode-block" id="DateCreatedFilter.get_order">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DateCreatedFilter.get_order">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order</span></div>
+
+
+<div class="viewcode-block" id="DateCreatedFilter.get_name">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DateCreatedFilter.get_name">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;date_created&quot;</span></div>
+
+
+<div class="viewcode-block" id="DateCreatedFilter.is_applicable">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.DateCreatedFilter.is_applicable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_applicable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ExtensionFilter">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ExtensionFilter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExtensionFilter</span><span class="p">(</span><span class="n">Filter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filters files by their file extension.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ExtensionFilter.__init__">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ExtensionFilter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ExtensionFilter created with order: </span><span class="si">{</span><span class="n">order</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExtensionFilter.get_category">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ExtensionFilter.get_category">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">extension</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;no_extension&quot;</span>
+        <span class="k">return</span> <span class="n">file</span><span class="o">.</span><span class="n">extension</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExtensionFilter.get_order">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ExtensionFilter.get_order">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order</span></div>
+
+
+<div class="viewcode-block" id="ExtensionFilter.get_name">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ExtensionFilter.get_name">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;extension&quot;</span></div>
+
+
+<div class="viewcode-block" id="ExtensionFilter.is_applicable">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ExtensionFilter.is_applicable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_applicable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ResolutionFilter">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ResolutionFilter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ResolutionFilter</span><span class="p">(</span><span class="n">Filter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filters files by resolution dimensions.</span>
+
+<span class="sd">    Primarily used for image and video files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ResolutionFilter.__init__">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ResolutionFilter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ResolutionFilter created with order: </span><span class="si">{</span><span class="n">order</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ResolutionFilter.get_category">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ResolutionFilter.get_category">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">metadata</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;dimensions&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">metadata</span><span class="o">.</span><span class="n">dimensions</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">dimensions</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;resolution&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">metadata</span><span class="o">.</span><span class="n">resolution</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">resolution</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_fallback_category</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ResolutionFilter.get_order">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ResolutionFilter.get_order">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order</span></div>
+
+
+<div class="viewcode-block" id="ResolutionFilter.get_name">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ResolutionFilter.get_name">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;resolution&quot;</span></div>
+
+
+<div class="viewcode-block" id="ResolutionFilter.is_applicable">
+<a class="viewcode-back" href="../../../modules/filters.html#imagewalker.filters.implementation.ResolutionFilter.is_applicable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_applicable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;dimensions&quot;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">dimensions</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;resolution&quot;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">file</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">resolution</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Delshi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>imagewalker.plugins.custom_filters.date_range_plugin &mdash; ImageWalker  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            ImageWalker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Документация:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/core.html">Core Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/core.html#main-application">Main Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/core.html#domain-models">Domain Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/services.html">Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/services.html#file-operations-service">File Operations Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/services.html#walker-service">Walker Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/services.html#statistics-service">Statistics Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/filters.html">Filters System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/filters.html#base-filters">Base Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/filters.html#filter-implementation">Filter Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/filters.html#filter-registry">Filter Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/plugins.html">Plugins System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/plugins.html#base-plugin-system">Base Plugin System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/plugins.html#plugin-registry-loader">Plugin Registry &amp; Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/plugins.html#custom-filters-plugins">Custom Filters Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/plugins.html#file-type-plugin">File Type Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/plugins.html#size-filter-plugin">Size Filter Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/plugins.html#date-range-plugin">Date Range Plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/repository.html">Repository Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/repository.html#repository-interface">Repository Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/repository.html#repository-implementation">Repository Implementation</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/utils.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/utils.html#print-utilities">Print Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/utils.html#service-providers">Service Providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/utils.html#connectors">Connectors</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">ImageWalker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">imagewalker.plugins.custom_filters.date_range_plugin</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for imagewalker.plugins.custom_filters.date_range_plugin</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imagewalker.domain.file_system_domain</span><span class="w"> </span><span class="kn">import</span> <span class="n">File</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imagewalker.plugins.interface</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BaseFilterPlugin</span><span class="p">,</span>
+    <span class="n">PluginConfig</span><span class="p">,</span>
+    <span class="n">template_plugin</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imagewalker.plugins.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">PluginRegistry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imagewalker.filters.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">Filter</span>
+
+
+<div class="viewcode-block" id="DateRangeConfig">
+<a class="viewcode-back" href="../../../../modules/plugins.html#imagewalker.plugins.custom_filters.date_range_plugin.DateRangeConfig">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DateRangeConfig</span><span class="p">(</span><span class="n">PluginConfig</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for date range grouping plugin.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        range_days: Number of days per range group.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">range_days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span></div>
+
+
+
+<div class="viewcode-block" id="DateRangePlugin">
+<a class="viewcode-back" href="../../../../modules/plugins.html#imagewalker.plugins.custom_filters.date_range_plugin.DateRangePlugin">[docs]</a>
+<span class="nd">@template_plugin</span>
+<span class="nd">@PluginRegistry</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;date_range&quot;</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DateRangePlugin</span><span class="p">(</span><span class="n">BaseFilterPlugin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plugin for grouping files by date ranges.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="n">DateRangeFilter</span><span class="p">(</span>
+            <span class="n">order</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;order&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">range_days</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;range_days&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_config_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">DateRangeConfig</span></div>
+
+
+
+<div class="viewcode-block" id="DateRangeFilter">
+<a class="viewcode-back" href="../../../../modules/plugins.html#imagewalker.plugins.custom_filters.date_range_plugin.DateRangeFilter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DateRangeFilter</span><span class="p">(</span><span class="n">Filter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter that categorizes files by modification date ranges.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DateRangeFilter.__init__">
+<a class="viewcode-back" href="../../../../modules/plugins.html#imagewalker.plugins.custom_filters.date_range_plugin.DateRangeFilter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">range_days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">range_days</span> <span class="o">=</span> <span class="n">range_days</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_order</span> <span class="o">=</span> <span class="n">order</span></div>
+
+
+<div class="viewcode-block" id="DateRangeFilter.get_category">
+<a class="viewcode-back" href="../../../../modules/plugins.html#imagewalker.plugins.custom_filters.date_range_plugin.DateRangeFilter.get_category">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stat</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">modified_time</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">st_mtime</span>
+            <span class="n">modified_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">modified_time</span><span class="p">)</span>
+
+            <span class="c1"># Группируем по диапазонам дней</span>
+            <span class="n">days_ago</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">modified_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+            <span class="n">range_num</span> <span class="o">=</span> <span class="n">days_ago</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_days</span>
+            <span class="n">start_days</span> <span class="o">=</span> <span class="n">range_num</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_days</span>
+            <span class="n">end_days</span> <span class="o">=</span> <span class="n">start_days</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_days</span>
+
+            <span class="k">if</span> <span class="n">range_num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;last_</span><span class="si">{</span><span class="n">end_days</span><span class="si">}</span><span class="s2">_days&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">start_days</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">end_days</span><span class="si">}</span><span class="s2">_days_ago&quot;</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;unknown_date&quot;</span></div>
+
+
+<div class="viewcode-block" id="DateRangeFilter.get_order">
+<a class="viewcode-back" href="../../../../modules/plugins.html#imagewalker.plugins.custom_filters.date_range_plugin.DateRangeFilter.get_order">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order</span></div>
+
+
+<div class="viewcode-block" id="DateRangeFilter.get_name">
+<a class="viewcode-back" href="../../../../modules/plugins.html#imagewalker.plugins.custom_filters.date_range_plugin.DateRangeFilter.get_name">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;date_range&quot;</span></div>
+
+
+<div class="viewcode-block" id="DateRangeFilter.is_applicable">
+<a class="viewcode-back" href="../../../../modules/plugins.html#imagewalker.plugins.custom_filters.date_range_plugin.DateRangeFilter.is_applicable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_applicable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;File&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Delshi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

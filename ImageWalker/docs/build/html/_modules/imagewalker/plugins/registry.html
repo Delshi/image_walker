@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>imagewalker.plugins.registry &mdash; ImageWalker  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            ImageWalker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Документация:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/core.html">Core Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/core.html#main-application">Main Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/core.html#domain-models">Domain Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/services.html">Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/services.html#file-operations-service">File Operations Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/services.html#walker-service">Walker Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/services.html#statistics-service">Statistics Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/filters.html">Filters System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/filters.html#base-filters">Base Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/filters.html#filter-implementation">Filter Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/filters.html#filter-registry">Filter Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/plugins.html">Plugins System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/plugins.html#base-plugin-system">Base Plugin System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/plugins.html#plugin-registry-loader">Plugin Registry &amp; Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/plugins.html#custom-filters-plugins">Custom Filters Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/plugins.html#file-type-plugin">File Type Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/plugins.html#size-filter-plugin">Size Filter Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/plugins.html#date-range-plugin">Date Range Plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/repository.html">Repository Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/repository.html#repository-interface">Repository Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/repository.html#repository-implementation">Repository Implementation</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/utils.html#print-utilities">Print Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/utils.html#service-providers">Service Providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/utils.html#connectors">Connectors</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">ImageWalker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">imagewalker.plugins.registry</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for imagewalker.plugins.registry</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Type</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.auto_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">PluginAutoLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.interface</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseFilterPlugin</span>
+
+
+<div class="viewcode-block" id="PluginRegistry">
+<a class="viewcode-back" href="../../../modules/plugins.html#imagewalker.plugins.registry.PluginRegistry">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PluginRegistry</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Registry for plugin management with auto-loading capability.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        _plugins: Dictionary mapping plugin names to plugin classes.</span>
+<span class="sd">        _auto_loaded: Flag indicating if auto-loading has been performed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_plugins</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_auto_loaded</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="PluginRegistry.auto_load_plugins">
+<a class="viewcode-back" href="../../../modules/plugins.html#imagewalker.plugins.registry.PluginRegistry.auto_load_plugins">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">auto_load_plugins</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Automatically loads all plugins from standard directories.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_auto_loaded</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Auto-loading plugins...&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Загружаем плагины из стандартной папки</span>
+        <span class="n">plugins_package</span> <span class="o">=</span> <span class="s2">&quot;imagewalker.plugins.custom_filters&quot;</span>
+        <span class="n">loaded</span> <span class="o">=</span> <span class="n">PluginAutoLoader</span><span class="o">.</span><span class="n">load_plugins_from_package</span><span class="p">(</span><span class="n">plugins_package</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Auto-loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">loaded</span><span class="p">)</span><span class="si">}</span><span class="s2"> plugins: </span><span class="si">{</span><span class="n">loaded</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_auto_loaded</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="PluginRegistry.register">
+<a class="viewcode-back" href="../../../modules/plugins.html#imagewalker.plugins.registry.PluginRegistry.register">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Decorator for registering plugin classes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: Optional custom name for the plugin.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Decorator function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">plugin_class</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]):</span>
+            <span class="c1"># Проверяем, что это действительно класс плагина</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">plugin_class</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span>
+                <span class="n">plugin_class</span><span class="p">,</span> <span class="n">BaseFilterPlugin</span>
+            <span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot; </span><span class="se">\033</span><span class="s2">[31m Warning: </span><span class="si">{</span><span class="n">plugin_class</span><span class="si">}</span><span class="s2"> is not a valid plugin class </span><span class="se">\033</span><span class="s2">[0m &quot;</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="n">plugin_class</span>
+
+            <span class="n">plugin_name</span> <span class="o">=</span> <span class="n">name</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span>
+                <span class="n">plugin_class</span><span class="p">,</span> <span class="s2">&quot;plugin_name&quot;</span><span class="p">,</span> <span class="n">plugin_class</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_plugins</span><span class="p">[</span><span class="n">plugin_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">plugin_class</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Registered plugin: </span><span class="si">{</span><span class="n">plugin_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">plugin_class</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">plugin_class</span>
+
+        <span class="k">return</span> <span class="n">decorator</span></div>
+
+
+<div class="viewcode-block" id="PluginRegistry.get_plugin">
+<a class="viewcode-back" href="../../../modules/plugins.html#imagewalker.plugins.registry.PluginRegistry.get_plugin">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_plugin</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves plugin class by name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: Name of the plugin to retrieve.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Plugin class if found, None otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Автозагружаем плагины при первом обращении</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_auto_loaded</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">auto_load_plugins</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PluginRegistry.get_available_plugins">
+<a class="viewcode-back" href="../../../modules/plugins.html#imagewalker.plugins.registry.PluginRegistry.get_available_plugins">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_available_plugins</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of all registered plugin names.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of available plugin names.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Автозагружаем плагины при первом обращении</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_auto_loaded</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">auto_load_plugins</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="PluginRegistry.create_plugin_instance">
+<a class="viewcode-back" href="../../../modules/plugins.html#imagewalker.plugins.registry.PluginRegistry.create_plugin_instance">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_plugin_instance</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates an instance of a plugin.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: Name of the plugin to instantiate.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Plugin instance if successful, None otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plugin_class</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_plugin</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plugin_class</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">instance</span> <span class="o">=</span> <span class="n">plugin_class</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">instance</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[31m Error creating plugin instance </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m &quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="PluginRegistry.manually_load_plugin">
+<a class="viewcode-back" href="../../../modules/plugins.html#imagewalker.plugins.registry.PluginRegistry.manually_load_plugin">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">manually_load_plugin</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">module_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Manually loads a plugin from a specific module path.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            module_path: File path to the plugin module.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">spec_from_file_location</span><span class="p">(</span><span class="s2">&quot;plugin_module&quot;</span><span class="p">,</span> <span class="n">module_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">spec</span> <span class="ow">and</span> <span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="p">:</span>
+                <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+                <span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Manually loaded plugin from: </span><span class="si">{</span><span class="n">module_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[31m Failed to manually load plugin </span><span class="si">{</span><span class="n">module_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m &quot;</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PluginRegistry.clear_registry">
+<a class="viewcode-back" href="../../../modules/plugins.html#imagewalker.plugins.registry.PluginRegistry.clear_registry">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_registry</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears the plugin registry (primarily for testing).&quot;&quot;&quot;</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_plugins</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_auto_loaded</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Delshi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

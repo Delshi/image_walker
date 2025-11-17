@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>imagewalker.plugins.connector &mdash; ImageWalker  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            ImageWalker
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Документация:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/core.html">Core Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/core.html#main-application">Main Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/core.html#domain-models">Domain Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/services.html">Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/services.html#file-operations-service">File Operations Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/services.html#walker-service">Walker Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/services.html#statistics-service">Statistics Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/filters.html">Filters System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/filters.html#base-filters">Base Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/filters.html#filter-implementation">Filter Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/filters.html#filter-registry">Filter Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/plugins.html">Plugins System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/plugins.html#base-plugin-system">Base Plugin System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/plugins.html#plugin-registry-loader">Plugin Registry &amp; Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/plugins.html#custom-filters-plugins">Custom Filters Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/plugins.html#file-type-plugin">File Type Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/plugins.html#size-filter-plugin">Size Filter Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../modules/plugins.html#date-range-plugin">Date Range Plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/repository.html">Repository Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/repository.html#repository-interface">Repository Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/repository.html#repository-implementation">Repository Implementation</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/utils.html#print-utilities">Print Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/utils.html#service-providers">Service Providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules/utils.html#connectors">Connectors</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">ImageWalker</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">imagewalker.plugins.connector</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for imagewalker.plugins.connector</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">imagewalker.plugins.interface</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseFilterPlugin</span>
+
+
+<div class="viewcode-block" id="PluginConnector">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PluginConnector</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles automatic discovery and loading of plugins from various sources.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        plugin_packages: List of packages to search for plugins.</span>
+<span class="sd">        _discovered_plugins: Cache of discovered plugin classes.</span>
+<span class="sd">        _plugin_instances: Cache of instantiated plugins.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PluginConnector.__init__">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin_packages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plugin_packages</span> <span class="o">=</span> <span class="n">plugin_packages</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_discovered_plugins</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_plugin_instances</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">BaseFilterPlugin</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+
+<div class="viewcode-block" id="PluginConnector.discover_plugins">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector.discover_plugins">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">discover_plugins</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">search_paths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Discovers plugins in specified search paths.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            search_paths: Optional list of paths to search.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary mapping plugin names to plugin classes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">discovered</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Стандартные пути поиска</span>
+        <span class="n">search_paths</span> <span class="o">=</span> <span class="n">search_paths</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="n">search_paths</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plugin_packages</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Searching for plugins in paths: </span><span class="si">{</span><span class="n">search_paths</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Ищем в текущей директории плагинов</span>
+        <span class="n">plugins_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;custom_filters&quot;</span>
+        <span class="k">if</span> <span class="n">plugins_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">search_paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">plugins_dir</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Added plugins directory: </span><span class="si">{</span><span class="n">plugins_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">search_path</span> <span class="ow">in</span> <span class="n">search_paths</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Searching in: </span><span class="si">{</span><span class="n">search_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">path_plugins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discover_in_path</span><span class="p">(</span><span class="n">search_path</span><span class="p">)</span>
+            <span class="n">discovered</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">path_plugins</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">path_plugins</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">path_plugins</span><span class="p">)</span><span class="si">}</span><span class="s2"> plugins in </span><span class="si">{</span><span class="n">search_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_discovered_plugins</span> <span class="o">=</span> <span class="n">discovered</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total discovered plugins: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">discovered</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">discovered</span></div>
+
+
+<div class="viewcode-block" id="PluginConnector._discover_in_path">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector._discover_in_path">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_discover_in_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Discovers plugins in a specific path.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            search_path: Path to search for plugins.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary of discovered plugins from this path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plugins</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Если путь существует как директория</span>
+            <span class="n">path_obj</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">search_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">path_obj</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">and</span> <span class="n">path_obj</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                <span class="n">plugins</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_discover_in_directory</span><span class="p">(</span><span class="n">search_path</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Пытаемся обработать как Python пакет</span>
+                <span class="n">plugins</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_discover_in_package</span><span class="p">(</span><span class="n">search_path</span><span class="p">))</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="se">\033</span><span class="s2">[31m Error discovering plugins in </span><span class="si">{</span><span class="n">search_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m &quot;</span><span class="p">)</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">plugins</span></div>
+
+
+<div class="viewcode-block" id="PluginConnector._discover_in_package">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector._discover_in_package">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_discover_in_package</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Discovers plugins in a Python package.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            package_name: Name of the Python package to search.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary of discovered plugins from this package.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plugins</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="se">\033</span><span class="s2">[31m Importing package: </span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m &quot;</span><span class="p">)</span>
+            <span class="n">package</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span>
+
+            <span class="c1"># Получаем путь пакета</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">package</span><span class="p">,</span> <span class="s2">&quot;__path__&quot;</span><span class="p">):</span>
+                <span class="n">package_path</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">__path__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Package path: </span><span class="si">{</span><span class="n">package_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                <span class="c1"># Сканируем директорию пакета</span>
+                <span class="n">plugins</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_scan_directory</span><span class="p">(</span><span class="n">package_path</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="se">\033</span><span class="s2">[31m Package </span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2"> has no __path__ </span><span class="se">\033</span><span class="s2">[0m &quot;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="se">\033</span><span class="s2">[31m Error importing package </span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m &quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot; </span><span class="se">\033</span><span class="s2">[31m Unexpected error with package </span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m &quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">plugins</span></div>
+
+
+<div class="viewcode-block" id="PluginConnector._discover_in_directory">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector._discover_in_directory">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_discover_in_directory</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Discovers plugins in a filesystem directory.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            directory_path: Directory path to search.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary of discovered plugins from this directory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plugins</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">directory</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="se">\033</span><span class="s2">[31m Directory does not exist: </span><span class="si">{</span><span class="n">directory_path</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m &quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">plugins</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Scanning directory: </span><span class="si">{</span><span class="n">directory_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">plugins</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_scan_directory</span><span class="p">(</span><span class="n">directory_path</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">plugins</span></div>
+
+
+<div class="viewcode-block" id="PluginConnector._scan_directory">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector._scan_directory">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_scan_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Scans a directory for plugin modules.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            directory_path: Directory to scan.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary of discovered plugins.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plugins</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory_path</span><span class="p">)</span>
+
+        <span class="c1"># Добавляем директорию в sys.path для импорта</span>
+        <span class="n">original_sys_path</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">directory</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">directory</span><span class="o">.</span><span class="n">parent</span><span class="p">))</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">directory</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.py&quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">file_path</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+                    <span class="k">continue</span>
+
+                <span class="n">module_name</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">stem</span>
+                <span class="n">package_path</span> <span class="o">=</span> <span class="n">directory</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span>
+                <span class="n">full_module_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">package_path</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">directory</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">module_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Loading module: </span><span class="si">{</span><span class="n">full_module_name</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">full_module_name</span><span class="p">)</span>
+                    <span class="n">module_plugins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_plugins_in_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+                    <span class="n">plugins</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">module_plugins</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">module_plugins</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;    Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">module_plugins</span><span class="p">)</span><span class="si">}</span><span class="s2"> plugins in </span><span class="si">{</span><span class="n">module_name</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="p">)</span>
+
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;    </span><span class="se">\033</span><span class="s2">[31m Error loading module </span><span class="si">{</span><span class="n">module_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m &quot;</span>
+                    <span class="p">)</span>
+                    <span class="c1"># Пробуем загрузить напрямую из файла</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">spec_from_file_location</span><span class="p">(</span>
+                            <span class="n">module_name</span><span class="p">,</span> <span class="n">file_path</span>
+                        <span class="p">)</span>
+                        <span class="k">if</span> <span class="n">spec</span> <span class="ow">and</span> <span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="p">:</span>
+                            <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+                            <span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+                            <span class="n">module_plugins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_plugins_in_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+                            <span class="n">plugins</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">module_plugins</span><span class="p">)</span>
+
+                            <span class="k">if</span> <span class="n">module_plugins</span><span class="p">:</span>
+                                <span class="nb">print</span><span class="p">(</span>
+                                    <span class="sa">f</span><span class="s2">&quot;    Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">module_plugins</span><span class="p">)</span><span class="si">}</span><span class="s2"> plugins in </span><span class="si">{</span><span class="n">file_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> (direct load)&quot;</span>
+                                <span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e2</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;    </span><span class="se">\033</span><span class="s2">[31m Error loading plugin from </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e2</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m &quot;</span>
+                        <span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   </span><span class="se">\033</span><span class="s2">[31m Error scanning directory </span><span class="si">{</span><span class="n">directory_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> </span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Восстанавливаем sys.path</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">original_sys_path</span>
+
+        <span class="k">return</span> <span class="n">plugins</span></div>
+
+
+<div class="viewcode-block" id="PluginConnector._find_plugins_in_module">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector._find_plugins_in_module">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_plugins_in_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Finds plugin classes in a loaded module.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            module: Python module to inspect.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary of plugin classes found in module.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plugins</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">BaseFilterPlugin</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">obj</span> <span class="o">!=</span> <span class="n">BaseFilterPlugin</span>
+            <span class="p">):</span>
+
+                <span class="n">plugin_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;plugin_name&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+                <span class="n">plugins</span><span class="p">[</span><span class="n">plugin_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;      Discovered plugin: </span><span class="si">{</span><span class="n">plugin_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">plugins</span></div>
+
+
+<div class="viewcode-block" id="PluginConnector.get_available_plugins">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector.get_available_plugins">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_available_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of available plugin names.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of discovered plugin names.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_discovered_plugins</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="PluginConnector.create_plugin_instance">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector.create_plugin_instance">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_plugin_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseFilterPlugin</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates an instance of a discovered plugin.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plugin_name: Name of the plugin to instantiate.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Plugin instance if found, None otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">plugin_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovered_plugins</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot; </span><span class="se">\033</span><span class="s2">[31m Plugin &#39;</span><span class="si">{</span><span class="n">plugin_name</span><span class="si">}</span><span class="s2">&#39; not found. </span><span class="se">\033</span><span class="s2">[0m Available: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_discovered_plugins</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">plugin_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugin_instances</span><span class="p">:</span>
+            <span class="n">plugin_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovered_plugins</span><span class="p">[</span><span class="n">plugin_name</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_plugin_instances</span><span class="p">[</span><span class="n">plugin_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">plugin_class</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plugin_instances</span><span class="p">[</span><span class="n">plugin_name</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="PluginConnector.get_plugin_info">
+<a class="viewcode-back" href="../../../modules/utils.html#imagewalker.plugins.connector.PluginConnector.get_plugin_info">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_plugin_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns information about a specific plugin.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plugin_name: Name of the plugin.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Plugin information dictionary if found, None otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plugin_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovered_plugins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">plugin_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plugin_class</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">plugin_class</span><span class="o">.</span><span class="n">get_plugin_info</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Delshi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
