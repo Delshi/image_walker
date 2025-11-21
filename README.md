@@ -59,8 +59,7 @@
 
 </details>
 
-<style>
-.ram-warning {
+<div style="
     background: linear-gradient(45deg, #ff0000, #ff6b6b);
     color: white;
     padding: 15px;
@@ -71,11 +70,8 @@
     text-align: center;
     box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
     margin: 20px 0;
-}
-</style>
-
-<div class="ram-warning">
-<strong>ТРЕБОВАНИЯ К ПАМЯТИ:</strong> Для работы CNN-модели требуется 5.5-6 GB VRAM/RAM️
+">
+<strong>ТРЕБОВАНИЯ К ПАМЯТИ:</strong> Для работы CNN-модели требуется 5.5-6 GB VRAM/RAM
 </div>
 
 ---
