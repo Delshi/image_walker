@@ -55,7 +55,7 @@
 
 <details><summary>Архитектура модели</summary>
 
-![CNN Architecture](\ImageWalker\imagewalker\plugins\custom_filters\cnn_principal_scheme.png)
+<img src="ImageWalker\imagewalker\plugins\custom_filters\cnn_principal_scheme.png" alt="CNN Architecture">
 
 </details>
 
