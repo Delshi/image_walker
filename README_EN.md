@@ -57,7 +57,7 @@ Based on my <a href="https://github.com/Delshi/Intel-Image-Classification">**cus
 
 <details><summary>Model's architecture</summary>
 
-![CNN Architecture](ImageWalker\imagewalker\plugins\custom_filters\cnn_principal_scheme.png)
+![CNN Architecture](\ImageWalker\imagewalker\plugins\custom_filters\cnn_principal_scheme.png)
 
 </details>
 
