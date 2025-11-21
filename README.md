@@ -71,7 +71,7 @@
     box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
     margin: 20px 0;
 ">
-<strong>ТРЕБОВАНИЯ К ПАМЯТИ:</strong> Для работы CNN-модели требуется 5.5-6 GB VRAM/RAM
+<strong>ТРЕБОВАНИЯ К ПАМЯТИ:</strong> Для работы CNN-модели требуется ~3 GB VRAM/RAM
 </div>
 
 ---
