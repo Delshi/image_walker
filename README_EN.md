@@ -1,8 +1,8 @@
 # ImageWalker
 
-**ImageWalker** is a flexible and extensible tool for automatically sorting files into categories based on their metadata: type, extension, resolution, size, date, and other parameters. It supports images, videos, audio, documents, and any other formats.
-
 **Language**: [English](README_EN.md) | [Русский](README.md)
+
+**ImageWalker** is a flexible and extensible tool for automatically sorting files into categories based on their metadata: type, extension, resolution, size, date, and other parameters. It supports images, videos, audio, documents, and any other formats.
 
 ---
 
@@ -13,7 +13,8 @@
 - [Quick start](#quick-start)
 - [Plugin example](#plugin-example)
 - [File structure](#file-structure)
-- [ПExample output](#example-output)
+- [Example output](#example-output)
+- [Documentation](#documentation)
 - [Requirements](#requirements)
 - [License](#license)
 
@@ -184,7 +185,46 @@ class CustomSizeConfig(PluginConfig):
     custom_step: float = 5.0
 ```
 
-3. Implement plugin. The `create_filter` method is required.
+3. Implement the filter by implementing the `Filter` interface
+
+```python
+class ByteSizeStepFilter(Filter):
+    """Filters files by size using configurable byte steps.
+
+    Categories are named in megabytes for readability.
+    """
+
+    def __init__(self, step_bytes: int, order: int = 1):
+        self.step_bytes = step_bytes
+        self._order = order
+
+    def get_category(self, file: "File") -> str:
+        try:
+            size = file.metadata.size_bytes
+            step = self.step_bytes
+            lower_bound = (size // step) * step
+            upper_bound = lower_bound + step
+            return f"{lower_bound/1e6:0.1f}-{upper_bound/1e6:0.1f}_MB"
+        except (AttributeError, TypeError):
+            return "unknown_size"
+
+    def get_order(self) -> int:
+        return self._order
+
+    def get_name(self) -> str:
+        return "byte_size"
+
+    def is_applicable(self, file: "File") -> bool:
+        try:
+            return (
+                hasattr(file.metadata, "size_bytes")
+                and file.metadata.size_bytes is not None
+            )
+        except Exception:
+            return False
+```
+
+4. Implement our plugin by implementing the `BaseFilterPlugin` interface.
 
 ```python
 @template_plugin
@@ -273,6 +313,10 @@ RESULT:
      date_range: 121 files (100.0%)
 Sorting completed successfully
 ```
+
+## Documentation
+
+Full documentation for the project and each module, class, and function in the web version is available at `\docs\build\html\index.html`
 
 ## Requirements
 

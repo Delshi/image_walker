@@ -1,8 +1,8 @@
 # ImageWalker
 
-**ImageWalker** — это гибкий и расширяемый инструмент для автоматической сортировки файлов по категориям на основе их метаданных: типа, расширения, разрешения, размера, даты и других параметров. Поддерживает изображения, видео, аудио, документы и любые другие форматы.
-
 **Language**: [English](README_EN.md) | [Русский](README.md)
+
+**ImageWalker** — это гибкий и расширяемый инструмент для автоматической сортировки файлов по категориям на основе их метаданных: типа, расширения, разрешения, размера, даты и других параметров. Поддерживает изображения, видео, аудио, документы и любые другие форматы.
 
 ---
 
@@ -14,6 +14,7 @@
 - [Пример плагина](#пример-плагина)
 - [Файловая структура](#файловая-структура)
 - [Пример вывода](#вывод)
+- [Документация](#документация)
 - [Зависимости](#зависимости)
 - [Лицензия](#лицензия)
 
@@ -152,7 +153,7 @@ python -m imagewalker.main
 
 ## Пример плагина
 
-1. Импортируем необходимые зависимости
+1. Импортируем необходимые зависимости.
 
 ```python
 from dataclasses import dataclass
@@ -163,10 +164,10 @@ from imagewalker.plugins.interface import (
     template_plugin,
 )
 from imagewalker.plugins.registry import PluginRegistry
-from imagewalker.filters.implementation import ByteSizeStepFilter
+from imagewalker.filters.filters import Filter
 ```
 
-2. Описываем конфигурацию плагина. В конфигурации нужно описать все переменные, которые плагин может принимать на вход
+2. Описываем конфигурацию плагина. В конфигурации нужно описать все переменные, которые плагин может принимать на вход.
 
 ```python
 @dataclass
@@ -182,7 +183,46 @@ class CustomSizeConfig(PluginConfig):
     custom_step: float = 5.0
 ```
 
-3. Реализуем свой плагин. Метод `create_filter` обязателен.
+3. Делаем имплементацию фильтра, реализуя интерфейс `Filter`.
+
+```python
+class ByteSizeStepFilter(Filter):
+    """Filters files by size using configurable byte steps.
+
+    Categories are named in megabytes for readability.
+    """
+
+    def __init__(self, step_bytes: int, order: int = 1):
+        self.step_bytes = step_bytes
+        self._order = order
+
+    def get_category(self, file: "File") -> str:
+        try:
+            size = file.metadata.size_bytes
+            step = self.step_bytes
+            lower_bound = (size // step) * step
+            upper_bound = lower_bound + step
+            return f"{lower_bound/1e6:0.1f}-{upper_bound/1e6:0.1f}_MB"
+        except (AttributeError, TypeError):
+            return "unknown_size"
+
+    def get_order(self) -> int:
+        return self._order
+
+    def get_name(self) -> str:
+        return "byte_size"
+
+    def is_applicable(self, file: "File") -> bool:
+        try:
+            return (
+                hasattr(file.metadata, "size_bytes")
+                and file.metadata.size_bytes is not None
+            )
+        except Exception:
+            return False
+```
+
+4. Делаем имплементацию своего плагина, реализуя интерфейс `BaseFilterPlugin`.
 
 ```python
 @template_plugin
@@ -271,6 +311,10 @@ RESULT:
      date_range: 121 files (100.0%)
 Sorting completed successfully
 ```
+
+## Документация
+
+Полная документация по проекту и каждому модулю, классу и функции в веб-версии доступна по пути `\docs\build\html\index.html`
 
 ## Зависимости
 
