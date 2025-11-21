@@ -59,6 +59,25 @@
 
 </details>
 
+<style>
+.ram-warning {
+    background: linear-gradient(45deg, #ff0000, #ff6b6b);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 3px solid #ff0000;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    margin: 20px 0;
+}
+</style>
+
+<div class="ram-warning">
+<strong>ТРЕБОВАНИЯ К ПАМЯТИ:</strong> Для работы CNN-модели требуется 5.5-6 GB VRAM/RAM️
+</div>
+
 ---
 
 **Скачать модель или узнать подробнее об архитектуре, реализации и качестве можно здесь: https://github.com/Delshi/Intel-Image-Classification**
