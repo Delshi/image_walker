@@ -1,4 +1,3 @@
-# plugins/custom_filters/custom_size_plugin.py
 from dataclasses import dataclass
 from typing import Dict, Any
 from imagewalker.plugins.interface import (

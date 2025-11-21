@@ -18,6 +18,7 @@ def main():
     try:
         allowed_ext = [
             "JPEG",
+            "JPG",
             "PNG",
             "GIF",
             "WEBP",
@@ -57,8 +58,14 @@ def main():
             {"name": "file_type", "order": 0},
             {"name": "extension", "order": 1},
             {"name": "resolution", "order": 2},
-            # {"name": "custom_size", "order": 3, "unit": "MB", "custom_step": 10},
-            # {"name": "date_range", "order": 4, "range_days": 7},
+            {
+                "name": "neural_classifier",
+                "order": 3,
+                "confidence_threshold": 0.8,
+                "process_non_images": True,
+            },
+            {"name": "custom_size", "order": 4, "unit": "MB", "custom_step": 10},
+            {"name": "date_range", "order": 5, "range_days": 7},
         ]
 
         result_tree = walker.sort_by(
