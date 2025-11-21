@@ -73,7 +73,7 @@ Based on my <a href="https://github.com/Delshi/Intel-Image-Classification">**cus
     box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
     margin: 20px 0;
 ">
-<strong>MEMORY REQUIREMENTS:</strong> The CNN model requires 5.5-6 GB of VRAM/RAM to run.
+<strong>MEMORY REQUIREMENTS:</strong> The CNN model requires ~3 GB of VRAM/RAM to run.
 </div>
 
 ---
