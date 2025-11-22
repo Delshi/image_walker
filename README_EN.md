@@ -2,7 +2,7 @@
 
 **Language**: [English](README_EN.md) | [Русский](README.md)
 
-**ImageWalker** is a flexible and extensible tool for automatically sorting files into categories based on their metadata: type, extension, resolution, size, date, and other parameters. It supports images, videos, audio, documents, and any other formats.
+**ImageWalker** is a flexible and extensible tool for automatically sorting files into categories based on their metadata: its content, type, extension, resolution, size, date, and other parameters. It supports images, videos, audio, documents, and any other formats.
 
 ---
 
